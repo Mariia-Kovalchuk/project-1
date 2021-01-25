@@ -1,0 +1,1 @@
+{"version":3,"sources":["sass\\_header.scss"],"names":[],"mappings":"AAAA,EACI,eAAA,CACA","file":"src.f7991b3e.css","sourceRoot":"..\\src","sourcesContent":["p{\r\n    font-size: large;\r\n    color: red;\r\n}\r\n"]}
