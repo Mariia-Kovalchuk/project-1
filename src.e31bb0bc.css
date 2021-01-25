@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/*
+ * Главный файл стилей.
+ * Все паршалы подключаются сюда.
+ */
+p {
+  font-size: large;
+  color: red;
+}
+
+/*# sourceMappingURL=/src.e31bb0bc.css.map */
