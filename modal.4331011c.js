@@ -117,83 +117,24 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
+})({"js/modal.js":[function(require,module,exports) {
+(function () {
+  var refs = {
+    openModalBtn: document.querySelector('[data-modal-open]'),
+    openModalBtnTab: document.querySelector('[data-modal-open-tab]'),
+    closeModalBtn: document.querySelector('[data-modal-close]'),
+    modal: document.querySelector('[data-modal]')
   };
+  refs.openModalBtn.addEventListener('click', toggleModal);
+  refs.openModalBtnTab.addEventListener('click', toggleModal);
+  refs.closeModalBtn.addEventListener('click', toggleModal);
 
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
+  function toggleModal() {
+    document.body.classList.toggle("modal-open");
+    refs.modal.classList.toggle('is-hidden');
   }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"sass/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"./..\\images\\header\\icon_check.svg":[["icon_check.fdcc0c42.svg","images/header/icon_check.svg"],"images/header/icon_check.svg"],"./..\\images\\traditions\\bg1-mobile_left.png":[["bg1-mobile_left.7ecff636.png","images/traditions/bg1-mobile_left.png"],"images/traditions/bg1-mobile_left.png"],"./..\\images\\traditions\\bg1-desktop_left.png":[["bg1-desktop_left.1fec5e16.png","images/traditions/bg1-desktop_left.png"],"images/traditions/bg1-desktop_left.png"],"./..\\images\\traditions\\bg1-mobile_right.png":[["bg1-mobile_right.c7e81b67.png","images/traditions/bg1-mobile_right.png"],"images/traditions/bg1-mobile_right.png"],"./..\\images\\traditions\\bg1-desktop_right.png":[["bg1-desktop_right.421e6f30.png","images/traditions/bg1-desktop_right.png"],"images/traditions/bg1-desktop_right.png"],"./..\\images\\reviews-bg-photo\\reviews-bg-photo-mobile.png":[["reviews-bg-photo-mobile.167e0d14.png","images/reviews-bg-photo/reviews-bg-photo-mobile.png"],"images/reviews-bg-photo/reviews-bg-photo-mobile.png"],"./..\\images\\reviews-bg-photo\\reviews-bg-photo-tablet.png":[["reviews-bg-photo-tablet.267ff61f.png","images/reviews-bg-photo/reviews-bg-photo-tablet.png"],"images/reviews-bg-photo/reviews-bg-photo-tablet.png"],"./..\\images\\reviews-bg-photo\\reviews-bg-photo-desktop.png":[["reviews-bg-photo-desktop.8447bd7a.png","images/reviews-bg-photo/reviews-bg-photo-desktop.png"],"images/reviews-bg-photo/reviews-bg-photo-desktop.png"],"./..\\images\\reviews\\quotes.svg":[["quotes.0bc66e65.svg","images/reviews/quotes.svg"],"images/reviews/quotes.svg"],"./..\\images\\reviews\\prev.svg":[["prev.5aee1ea8.svg","images/reviews/prev.svg"],"images/reviews/prev.svg"],"./..\\images\\reviews\\next.svg":[["next.abc9b37e.svg","images/reviews/next.svg"],"images/reviews/next.svg"],"./..\\images\\reviews\\house.svg":[["house.11a03036.svg","images/reviews/house.svg"],"images/reviews/house.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
-"use strict";
-
-require("./sass/main.scss");
-},{"./sass/main.scss":"sass/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+})();
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -397,5 +338,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/src.e31bb0bc.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/modal.js"], null)
+//# sourceMappingURL=/modal.4331011c.js.map
