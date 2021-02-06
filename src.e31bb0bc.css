@@ -736,11 +736,13 @@ html {
   z-index: 20;
   display: flex;
   flex-flow: column;
-  padding-top: 60px;
+  padding-top: 104px;
   height: 502px;
   background-color: #e17992;
   overflow-y: auto;
+  overflow-x: hidden;
   width: 250px;
+  max-height: 100vh;
   border-bottom-left-radius: 5%;
   transition: 0.5s;
 }
@@ -759,6 +761,7 @@ html {
     height: auto;
     padding-top: 0;
     overflow-y: visible;
+    overflow-x: visible;
     flex-flow: row-reverse;
   }
   .menu__nav .menu__link:not(:last-child) {
@@ -770,9 +773,14 @@ html {
   right: 0;
 }
 
+.menu-list {
+  overflow-y: auto;
+  max-height: 100vh;
+}
 @media (min-width: 1200px) {
   .menu-list {
     display: flex;
+    overflow-y: visible;
   }
 }
 
@@ -855,6 +863,16 @@ html {
     width: 160px;
     margin-left: 110px;
     margin-bottom: 0;
+  }
+}
+
+.menu__nav .buy-now {
+  position: absolute;
+  top: 60px;
+}
+@media (min-width: 1200px) {
+  .menu__nav .buy-now {
+    position: static;
   }
 }
 
