@@ -136,11 +136,13 @@ html {
   z-index: 20;
   display: flex;
   flex-flow: column;
-  padding-top: 60px;
+  padding-top: 104px;
   height: 502px;
   background-color: $menu-background-color;
   overflow-y: auto;
+  overflow-x: hidden;
   width: 250px;
+  max-height: 100vh;
   border-bottom-left-radius: 5%;
   transition: 0.5s;
   @media (min-width: $tablet) {
@@ -167,6 +169,8 @@ html {
 }
 
 .menu-list {
+  overflow-y: auto;
+  max-height: 100vh;
   @media (min-width: $desktop) {
     display: flex;
   }
@@ -246,6 +250,14 @@ html {
     width: 160px;
     margin-left: 110px;
     margin-bottom: 0;
+  }
+}
+
+.menu__nav .buy-now {
+  position: absolute;
+  top: 60px;
+  @media (min-width: $desktop) {
+    position: static;
   }
 }
 
